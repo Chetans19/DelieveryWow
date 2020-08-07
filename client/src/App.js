@@ -1,11 +1,12 @@
 import React from 'react';
 
 import './App.css';
+import AllDishComponent from './components/AllDish/AllDishComponent';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <AllDishComponent />
     </div>
   );
 }
