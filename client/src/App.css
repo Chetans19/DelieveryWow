@@ -130,7 +130,7 @@ img {
 }
 
 .cart_price_button {
-  padding-top    : 5px;
+  padding        : 5px 0;
   display        : flex;
   justify-content: space-between;
   align-self     : center;

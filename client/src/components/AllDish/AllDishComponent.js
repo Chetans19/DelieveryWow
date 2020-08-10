@@ -8,16 +8,32 @@ class AllDishComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cart_count: 1,
+            cart_count: 0,
             isAuthenticated: false,
-            cart_product_list: [1]
+            cart_product_list: []
+        }
+    }
+
+    componentDidMount() {
+        if (this.state.isAuthenticated) {
+            //get by api
+        }
+        else {
+            let cart = JSON.parse(localStorage.getItem("cart_product")) || null;
+            if (cart !== null && cart.length !== 0) {
+                this.setState({ cart_count: cart.length });
+                this.setState({ cart_product_list: [...this.state.cart_product_list, ...cart] });
+            }
+
         }
     }
 
     addToCart = (id) => {
         if (!this.state.cart_product_list.includes(id)) {
             this.setState({ cart_count: this.state.cart_count + 1 });
-            this.setState({ cart_product_list: [...this.state.cart_product_list, id] });
+            let new_list = [...this.state.cart_product_list, id];
+            this.setState({ cart_product_list: new_list });
+            localStorage.setItem("cart_product", JSON.stringify([...this.state.cart_product_list, id]));
         }
     }
 
@@ -27,7 +43,9 @@ class AllDishComponent extends Component {
             if (index > -1) {
                 this.setState({ cart_count: this.state.cart_count - 1 });
                 let index = this.state.cart_product_list.indexOf(id);
-                this.setState({ cart_product_list: [...this.state.cart_product_list.slice(0, index), ... this.state.cart_product_list.slice(index + 1)] });
+                let new_list = [...this.state.cart_product_list.slice(0, index), ... this.state.cart_product_list.slice(index + 1)];
+                this.setState({ cart_product_list: new_list });
+                localStorage.setItem("cart_product", JSON.stringify(new_list));
             }
         }
     }
