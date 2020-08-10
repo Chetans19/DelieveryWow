@@ -5,6 +5,7 @@ import Backdrop from './components/Backdrop/Backdrop'
 // import SigInform from './components/Form/Signin'
 import RegForm from './components/Form/Register'
 import './App.css';
+import AllDishComponent from './components/AllDish/AllDishComponent';
 
 class App extends Component {
   state = {
@@ -37,6 +38,7 @@ class App extends Component {
             <p> Some random text </p>
             <RegForm/>
           </main>
+      <AllDishComponent />
         </div>
       </>
     );
