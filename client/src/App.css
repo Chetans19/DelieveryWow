@@ -1,7 +1,6 @@
 /* mobile first*/
 
 html {
-  font-family     : Roboto;
   box-sizing      : border-box;
   margin          : 0px;
   padding         : 0px;
@@ -33,6 +32,7 @@ header {
   font-size  : 19px;
   flex-basis : 42%;
 }
+
 
 .searchbar {
   order     : 9999;
