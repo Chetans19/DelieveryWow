@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import getCart from '../../store/actions/getCart'
+import addToCart from '../../store/actions/addToCart'
+import removeFromCart from '../../store/actions/removeFromCart'
 
 import AllDishCard from '../Card/AllDishCard';
 import { data } from '../AllDish/MockData';
@@ -10,9 +15,9 @@ class AllDishComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            cart_count: 0,
+
             isAuthenticated: false,
-            cart_product_list: []
+
         }
     }
 
@@ -22,36 +27,11 @@ class AllDishComponent extends Component {
             //get by api
         }
         else {
-            let cart = JSON.parse(localStorage.getItem("cart_product")) || null;
-            if (cart !== null && cart.length !== 0) {
-                this.setState({ cart_count: cart.length });
-                this.setState({ cart_product_list: [...this.state.cart_product_list, ...cart] });
-            }
-
+            this.props.getCart()
         }
     }
 
-    addToCart = (id) => {
-        if (!this.state.cart_product_list.includes(id)) {
-            this.setState({ cart_count: this.state.cart_count + 1 });
-            let new_list = [...this.state.cart_product_list, id];
-            this.setState({ cart_product_list: new_list });
-            localStorage.setItem("cart_product", JSON.stringify([...this.state.cart_product_list, id]));
-        }
-    }
 
-    removeFromCart = (id) => {
-        if (this.state.cart_count > 0 && this.state.cart_product_list.length > 0) {
-            let index = this.state.cart_product_list.indexOf(id);
-            if (index > -1) {
-                this.setState({ cart_count: this.state.cart_count - 1 });
-                let index = this.state.cart_product_list.indexOf(id);
-                let new_list = [...this.state.cart_product_list.slice(0, index), ...this.state.cart_product_list.slice(index + 1)];
-                this.setState({ cart_product_list: new_list });
-                localStorage.setItem("cart_product", JSON.stringify(new_list));
-            }
-        }
-    }
 
     render() {
         return (
@@ -70,9 +50,9 @@ class AllDishComponent extends Component {
                     </div>
                     <Link to='/cart' >
                         <div className="cart_headnav">
-                            {this.state.cart_count ?
+                            {this.props.cart.length ?
                                 <div className="cart_count">
-                                    {this.state.cart_count}
+                                    {this.props.cart.length}
                                 </div> : ""
                             }
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z" /><path d="M4 6.414L.757 3.172l1.415-1.415L5.414 5h15.242a1 1 0 0 1 .958 1.287l-2.4 8a1 1 0 0 1-.958.713H6v2h11v2H5a1 1 0 0 1-1-1V6.414zM5.5 23a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill="rgba(255,255,255,1)" /></svg>
@@ -90,7 +70,9 @@ class AllDishComponent extends Component {
                 </header>
 
                 <div>
-                    <AllDishCard sources={data} cart_item={this.state.cart_product_list} addToCart={this.addToCart} removeFromCart={this.removeFromCart} />
+
+                    <AllDishCard sources={data} cart_item={this.props.cart} addToCart={this.props.addToCart} removeFromCart={this.props.removeFromCart} />
+
                 </div>
             </>
 
@@ -99,4 +81,8 @@ class AllDishComponent extends Component {
 
 }
 
-export default withRouter(AllDishComponent);
+const mapStateToProps = (state) => ({
+    cart: state.cart
+})
+
+export default connect(mapStateToProps, { getCart, addToCart, removeFromCart })(withRouter(AllDishComponent));
