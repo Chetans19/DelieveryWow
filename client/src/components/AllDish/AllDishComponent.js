@@ -27,6 +27,7 @@ class AllDishComponent extends Component {
             //get by api
         }
         else {
+            console.log(new URLSearchParams(this.props.location.search))
             this.props.getCart()
         }
     }
