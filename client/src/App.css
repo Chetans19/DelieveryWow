@@ -1,12 +1,16 @@
 /* mobile first*/
 
-html {
+html,
+body {
   box-sizing      : border-box;
   margin          : 0px;
   padding         : 0px;
   line-height     : 1.5;
-  background-color: #FEFEFE;
+  background-color: #F1F3F6;
+  hyphens         : auto;
+
 }
+
 
 header {
   padding         : 5px 0 10px 0;
@@ -165,6 +169,76 @@ img {
   position: absolute;
   right   : 10px;
   top     : 10px;
+}
+
+
+/*cart*/
+
+
+
+.cart {
+  background-color : white;
+  line-height      : 2;
+  margin           : 20px 30px;
+  display          : flex;
+  display          : -webkit-flex;
+  display          : -ms-flexbox;
+  flex-flow        : row wrap;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-wrap    : wrap;
+}
+
+.cart_heading {
+  font-weight  : 600;
+  padding      : 10px 0px 10px 20px;
+  width        : 100%;
+  border-bottom: 1px solid #f1f3f6;
+}
+
+.product_list {
+  flex             : 1 1 100%;
+  display          : flex;
+  display          : -webkit-flex;
+  display          : -ms-flexbox;
+  flex-flow        : column nowrap;
+  -webkit-flex-flow: column nowrap;
+}
+
+.price_list {
+  flex   : 1 1 100%;
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+}
+
+.cart_card {
+  flex-basis   : 100%;
+  padding      : 10px 10px 10px 20px;
+  display      : flex;
+  display      : -ms-flexbox;
+  display      : -webkit-flex;
+  flex-flow    : row nowrap;
+  width        : inherit;
+  border-bottom: 1px solid #f1f3f6;
+}
+
+.cart_img {
+  display      : none;
+  align-content: center;
+  align-self   : center;
+  height       : 112px;
+  width        : 112px;
+  object-fit   : cover;
+}
+
+.subtext {
+  font-weight: 400;
+  color      : #878787;
+}
+
+.heading {
+  font-weight: 600;
+  color      : #303030;
 }
 
 @media only screen and (min-width:320px) {}
