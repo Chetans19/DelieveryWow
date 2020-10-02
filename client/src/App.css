@@ -205,10 +205,15 @@ img {
 }
 
 .price_list {
-  flex   : 1 1 100%;
-  display: flex;
-  display: -webkit-flex;
-  display: -ms-flexbox;
+  padding        : 10px 10px 10px 20px;
+  position       : relative;
+  bottom         : 0;
+  flex           : 1 1 100%;
+  width          : inherit;
+  display        : flex;
+  display        : -webkit-flex;
+  display        : -ms-flexbox;
+  justify-content: space-between;
 }
 
 .cart_card {
@@ -237,6 +242,7 @@ img {
 }
 
 .heading {
+  font-size  : 18px;
   font-weight: 600;
   color      : #303030;
 }

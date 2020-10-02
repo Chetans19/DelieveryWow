@@ -7,23 +7,41 @@ class CartPage extends Component {
         super()
         this.state = {
             cart_count: 0,
-            cart_product: [],
-            cart_product_count: {}
+            cart_product_list: [],
+
         }
+
+        this.removeFromCart = this.removeFromCart.bind(this)
     }
 
     componentDidMount() {
         let cart = JSON.parse(localStorage.getItem("cart_product")) || null
         if (cart !== null && cart.length !== 0) {
             this.setState({ cart_count: cart.length })
-            this.setState({ cart_product: [...this.state.cart_product, ...cart] })
+            this.setState({ cart_product_list: [...this.state.cart_product_list, ...cart] })
         }
 
     }
+
+    removeFromCart = (id) => {
+        if (this.state.cart_count > 0 && this.state.cart_product_list.length > 0) {
+            let index = this.state.cart_product_list.indexOf(id);
+            if (index > -1) {
+                this.setState({ cart_count: this.state.cart_count - 1 });
+                let index = this.state.cart_product_list.indexOf(id);
+                let new_list = [...this.state.cart_product_list.slice(0, index), ...this.state.cart_product_list.slice(index + 1)];
+                this.setState({ cart_product_list: new_list });
+                localStorage.setItem("cart_product", JSON.stringify(new_list));
+            }
+        }
+    }
+
     render() {
+        var cart_amount = 0;
         const dishes_template = () => {
-            const dishes = data.filter((dish) => this.state.cart_product.indexOf(dish.id) > -1)
+            const dishes = data.filter((dish) => this.state.cart_product_list.indexOf(dish.id) > -1)
             return dishes.map((dish) => {
+                cart_amount = cart_amount + dish.price
                 return (
                     <div className="cart_card" key={dish.id}>
                         <div className="cart_img">
@@ -36,9 +54,9 @@ class CartPage extends Component {
                                 ₹{dish.price}
 
                             </div>
-                            <button className="card_button_remove">
-                                Remove
-                            </button>
+                            <div style={{ cursor: "pointer" }} onClick={() => this.removeFromCart(dish.id)}>
+                                Remove from cart
+                            </div>
                         </div>
                     </div>
                 )
@@ -82,7 +100,12 @@ class CartPage extends Component {
                             </div>
 
                             <div className="price_list">
-
+                                <div className="heading">
+                                    ₹{cart_amount}
+                                </div>
+                                <button className="card_button_remove">
+                                    Place Order
+                            </button>
                             </div>
                         </> :
                         <div>
