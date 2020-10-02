@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+
 import getCart from '../../store/actions/getCart'
 import addToCart from '../../store/actions/addToCart'
 import removeFromCart from '../../store/actions/removeFromCart'
@@ -108,8 +110,8 @@ class CartPage extends Component {
                             </button>
                             </div>
                         </> :
-                        <div>
-                            Cart is Empty
+                        <div className="empty_cart">
+                            oh no! your cart is Empty, you can add <Link to="/dishes" >some dish</Link>
                         </div>}
 
                 </div>
