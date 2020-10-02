@@ -12,6 +12,8 @@ class CartPage extends Component {
         }
 
         this.removeFromCart = this.removeFromCart.bind(this)
+        this.onMouseHover = this.onMouseHover.bind(this)
+        this.onMouseOut = this.onMouseOut.bind(this)
     }
 
     componentDidMount() {
@@ -23,7 +25,9 @@ class CartPage extends Component {
 
     }
 
-    removeFromCart = (id) => {
+    removeFromCart = (event) => {
+
+        let id = Number(event.target.id);
         if (this.state.cart_count > 0 && this.state.cart_product_list.length > 0) {
             let index = this.state.cart_product_list.indexOf(id);
             if (index > -1) {
@@ -34,6 +38,15 @@ class CartPage extends Component {
                 localStorage.setItem("cart_product", JSON.stringify(new_list));
             }
         }
+    }
+
+
+    onMouseHover = (event) => {
+        event.target.style.color = "#2874F0"
+    }
+
+    onMouseOut = (event) => {
+        event.target.style.color = "#303030"
     }
 
     render() {
@@ -47,14 +60,14 @@ class CartPage extends Component {
                         <div className="cart_img">
                             <img src={dish.imageLink} alt={dish.name} />
                         </div>
-                        <div>
+                        <div className="cart_product_description">
                             <div className="heading">{dish.name}</div>
                             <div className="subtext">{dish.restaurant}</div>
                             <div className="card_price">
                                 ₹{dish.price}
 
                             </div>
-                            <div style={{ cursor: "pointer" }} onClick={() => this.removeFromCart(dish.id)}>
+                            <div id={dish.id} style={{ cursor: "pointer" }} onClick={this.removeFromCart} onMouseOver={this.onMouseHover} onMouseOut={this.onMouseOut}>
                                 Remove from cart
                             </div>
                         </div>

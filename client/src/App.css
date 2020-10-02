@@ -231,9 +231,18 @@ img {
   display      : none;
   align-content: center;
   align-self   : center;
-  height       : 112px;
-  width        : 112px;
+
+}
+
+.cart_card img {
+  height       : 130px;
+  width        : 130px;
   object-fit   : cover;
+  border-radius: 5px;
+}
+
+.cart_product_description {
+  padding: 10px 10px 10px 20px;
 }
 
 .subtext {
@@ -252,6 +261,10 @@ img {
 @media only screen and (min-width:480px) {
   .logo {
     flex-basis: 53%;
+  }
+
+  .cart_img {
+    display: inherit;
   }
 
   .all_dish_card {
