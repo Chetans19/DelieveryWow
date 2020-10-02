@@ -5,8 +5,9 @@ import getCart from '../../store/actions/getCart'
 import addToCart from '../../store/actions/addToCart'
 import removeFromCart from '../../store/actions/removeFromCart'
 
+import getProduct from '../../store/actions/getProduct'
+
 import AllDishCard from '../Card/AllDishCard';
-import { data } from '../AllDish/MockData';
 import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 
@@ -27,7 +28,9 @@ class AllDishComponent extends Component {
             //get by api
         }
         else {
-            console.log(new URLSearchParams(this.props.location.search))
+            let query = new URLSearchParams(this.props.location.search)
+            let pagenumber = query.get("page") || 1;
+            this.props.getProduct(pagenumber)
             this.props.getCart()
         }
     }
@@ -71,9 +74,7 @@ class AllDishComponent extends Component {
                 </header>
 
                 <div>
-
-                    <AllDishCard sources={data} cart_item={this.props.cart} addToCart={this.props.addToCart} removeFromCart={this.props.removeFromCart} />
-
+                    < AllDishCard sources={this.props.product} cart_item={this.props.cart} addToCart={this.props.addToCart} removeFromCart={this.props.removeFromCart} />
                 </div>
             </>
 
@@ -83,7 +84,8 @@ class AllDishComponent extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    cart: state.cart
+    cart: state.cart,
+    product: state.product
 })
 
-export default connect(mapStateToProps, { getCart, addToCart, removeFromCart })(withRouter(AllDishComponent));
+export default connect(mapStateToProps, { getCart, addToCart, getProduct, removeFromCart })(withRouter(AllDishComponent));

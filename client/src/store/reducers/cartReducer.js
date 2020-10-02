@@ -5,7 +5,9 @@ export default (state = [], action) => {
         case actionTypes.SET_ITEMS_TO_CART: {
             return action.payload
         }
-        default:
+        default: {
+
             return state
+        }
     }
 }
