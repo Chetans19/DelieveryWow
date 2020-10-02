@@ -256,6 +256,12 @@ img {
   color      : #303030;
 }
 
+
+.empty_cart {
+  padding: 10px 10px 10px 20px;
+}
+
+
 @media only screen and (min-width:320px) {}
 
 @media only screen and (min-width:480px) {

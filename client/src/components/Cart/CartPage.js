@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+
+import getCart from '../../store/actions/getCart'
+import addToCart from '../../store/actions/addToCart'
+import removeFromCart from '../../store/actions/removeFromCart'
+
 import { data } from '../AllDish/MockData';
 
 class CartPage extends Component {
 
     constructor() {
         super()
-        this.state = {
-            cart_count: 0,
-            cart_product_list: [],
-
-        }
 
         this.removeFromCart = this.removeFromCart.bind(this)
         this.onMouseHover = this.onMouseHover.bind(this)
@@ -17,27 +19,14 @@ class CartPage extends Component {
     }
 
     componentDidMount() {
-        let cart = JSON.parse(localStorage.getItem("cart_product")) || null
-        if (cart !== null && cart.length !== 0) {
-            this.setState({ cart_count: cart.length })
-            this.setState({ cart_product_list: [...this.state.cart_product_list, ...cart] })
-        }
+
+        this.props.getCart()
 
     }
 
     removeFromCart = (event) => {
-
         let id = Number(event.target.id);
-        if (this.state.cart_count > 0 && this.state.cart_product_list.length > 0) {
-            let index = this.state.cart_product_list.indexOf(id);
-            if (index > -1) {
-                this.setState({ cart_count: this.state.cart_count - 1 });
-                let index = this.state.cart_product_list.indexOf(id);
-                let new_list = [...this.state.cart_product_list.slice(0, index), ...this.state.cart_product_list.slice(index + 1)];
-                this.setState({ cart_product_list: new_list });
-                localStorage.setItem("cart_product", JSON.stringify(new_list));
-            }
-        }
+        this.props.removeFromCart(id)
     }
 
 
@@ -52,7 +41,7 @@ class CartPage extends Component {
     render() {
         var cart_amount = 0;
         const dishes_template = () => {
-            const dishes = data.filter((dish) => this.state.cart_product_list.indexOf(dish.id) > -1)
+            const dishes = data.filter((dish) => this.props.cart.indexOf(dish.id) > -1)
             return dishes.map((dish) => {
                 cart_amount = cart_amount + dish.price
                 return (
@@ -104,9 +93,9 @@ class CartPage extends Component {
 
                 <div className="cart">
                     <div className="cart_heading">
-                        My Cart ({this.state.cart_count})
+                        My Cart ({this.props.cart.length})
                     </div>
-                    {this.state.cart_count ?
+                    {this.props.cart.length ?
                         <>
                             <div className="product_list">
                                 {dishes_template()}
@@ -121,8 +110,8 @@ class CartPage extends Component {
                             </button>
                             </div>
                         </> :
-                        <div>
-                            Cart is Empty
+                        <div className="empty_cart">
+                            oh no! your cart is Empty, you can add <Link to="/dishes" >some dish</Link>
                         </div>}
 
                 </div>
@@ -131,4 +120,8 @@ class CartPage extends Component {
     }
 }
 
-export default CartPage
+const mapStateToProps = (state) => ({
+    cart: state.cart
+})
+
+export default connect(mapStateToProps, { addToCart, removeFromCart, getCart }, null)(CartPage)
