@@ -45,6 +45,11 @@ class AllDishComponent extends Component {
         if (this.state.currentPage != pagenumber) {
             this.setState({ currentPage: pagenumber })
             this.props.getProduct(this.props.history, pagenumber)
+            window.scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
         }
     }
 

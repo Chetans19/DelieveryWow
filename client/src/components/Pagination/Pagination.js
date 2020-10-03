@@ -72,26 +72,26 @@ class Pagination extends Component {
                     <div className="pageof_span">Page {this.props.currentPage} of {Math.ceil(this.props.totalproducts / 12)}</div>
                     <div className="nav_page">
                         {0 >= this.props.currentPage - 1 ? '' :
-                            <li key="previous">
+                            <div key="previous">
                                 <Link className="nav_page_linK_previous_next" to={`/dishes?page=${this.props.currentPage - 1}`}>Previous</Link>
-                            </li>
+                            </div>
                         }
 
                         {this.state.links.map(link => {
                             return (
                                 link == this.props.currentPage ?
-                                    <li key={link}>
+                                    <div key={link}>
                                         <Link className="nav_page_linK_current" to={`/dishes?page=${link}`}>{link}</Link>
-                                    </li> :
-                                    <li key={link}>
+                                    </div> :
+                                    <div key={link}>
                                         <Link className="nav_page_link" to={`/dishes?page=${link}`}>{link}</Link>
-                                    </li>
+                                    </div>
                             )
                         })}
                         {((this.props.currentPage + 1)) > Math.ceil(this.props.totalproducts / 12) ? '' :
-                            <li key="next">
+                            <div key="next">
                                 <Link className="nav_page_linK_previous_next" to={`/dishes?page=${this.props.currentPage + 1}`}>Next</Link>
-                            </li>
+                            </div>
                         }
                     </div>
                     <span className="pageof_span"></span>
