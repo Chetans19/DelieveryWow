@@ -1,10 +1,14 @@
 import * as actionTypes from '../actiontypes'
 
-export default (state = [], action) => {
+const initalstate = {
+    totalproducts: 0,
+    product: []
+}
+
+export default (state = initalstate, action) => {
     switch (action.type) {
         case actionTypes.SET_PRODUCT: {
-
-            return [...action.payload]
+            return { ...action.payload }
         }
         default: {
             return state

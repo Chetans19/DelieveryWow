@@ -35,12 +35,6 @@ class AllDishComponent extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (this.props.product !== nextProps.product) {
-            return false
-        }
-    }
-
 
 
     render() {
@@ -80,7 +74,8 @@ class AllDishComponent extends Component {
                 </header>
 
                 <div>
-                    < AllDishCard sources={this.props.product} cart_item={this.props.cart} addToCart={this.props.addToCart} removeFromCart={this.props.removeFromCart} />
+                    {console.log(this.props.product)}
+                    < AllDishCard sources={this.props.product['product']} cart_item={this.props.cart} addToCart={this.props.addToCart} removeFromCart={this.props.removeFromCart} />
                 </div>
             </>
 
