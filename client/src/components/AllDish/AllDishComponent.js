@@ -7,7 +7,9 @@ import removeFromCart from '../../store/actions/removeFromCart'
 
 import getProduct from '../../store/actions/getProduct'
 
-import AllDishCard from '../Card/AllDishCard';
+import AllDishCard from '../Card/AllDishCard'
+import Pagination from '../Pagination/Pagination'
+
 import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 
@@ -16,7 +18,7 @@ class AllDishComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            currentPage: 1,
             isAuthenticated: false,
 
         }
@@ -30,12 +32,20 @@ class AllDishComponent extends Component {
         else {
             let query = new URLSearchParams(this.props.location.search)
             let pagenumber = query.get("page") || 1;
-            this.props.getProduct(pagenumber)
+            console.log(pagenumber)
+            this.setState({ currentPage: pagenumber })
+            this.props.getProduct(this.props.history, pagenumber)
             this.props.getCart()
         }
     }
 
-
+    componentDidUpdate(prevprops, prevstate, snap) {
+        let query = new URLSearchParams(this.props.location.search)
+        let pagenumber = query.get("page") || 1;
+        if (this.state.currentPage != pagenumber) {
+            this.props.getProduct(this.props.history, pagenumber)
+        }
+    }
 
     render() {
         return (
@@ -74,8 +84,8 @@ class AllDishComponent extends Component {
                 </header>
 
                 <div>
-                    {console.log(this.props.product)}
                     < AllDishCard sources={this.props.product['product']} cart_item={this.props.cart} addToCart={this.props.addToCart} removeFromCart={this.props.removeFromCart} />
+                    <Pagination totalproducts={this.props.product['totalproducts']} currentPage={this.state.currentPage} />
                 </div>
             </>
 
