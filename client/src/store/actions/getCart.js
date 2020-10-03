@@ -8,7 +8,6 @@ export default () => async (dispatch) => {
             type: SET_ITEMS_TO_CART,
             payload: cart
         })
-
     }
     catch (e) {
 

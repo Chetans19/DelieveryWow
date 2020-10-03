@@ -1,11 +1,18 @@
 import * as actionTypes from '../actiontypes'
 
-export default (state = {}, action) => {
+const initalstate = {
+    totalproducts: 0,
+    product: []
+}
+
+export default (state = initalstate, action) => {
     switch (action.type) {
         case actionTypes.SET_PRODUCT: {
-            return ({ ...state, ...action.payload })
+            return { ...action.payload }
         }
-        default:
+        default: {
+            console.log(state)
             return state
+        }
     }
 }
