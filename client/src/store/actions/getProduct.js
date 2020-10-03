@@ -11,6 +11,7 @@ export default (history, page_number) => async (dispatch) => {
             history.push('./dishes')
             return false
         }
+
         if (page_number <= 0) {
             history.push('./dishes')
             return false

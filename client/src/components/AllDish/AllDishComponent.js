@@ -32,7 +32,7 @@ class AllDishComponent extends Component {
         else {
             let query = new URLSearchParams(this.props.location.search)
             let pagenumber = query.get("page") || 1;
-            console.log(pagenumber)
+
             this.setState({ currentPage: pagenumber })
             this.props.getProduct(this.props.history, pagenumber)
             this.props.getCart()
@@ -43,6 +43,7 @@ class AllDishComponent extends Component {
         let query = new URLSearchParams(this.props.location.search)
         let pagenumber = query.get("page") || 1;
         if (this.state.currentPage != pagenumber) {
+            this.setState({ currentPage: pagenumber })
             this.props.getProduct(this.props.history, pagenumber)
         }
     }
@@ -85,7 +86,7 @@ class AllDishComponent extends Component {
 
                 <div>
                     < AllDishCard sources={this.props.product['product']} cart_item={this.props.cart} addToCart={this.props.addToCart} removeFromCart={this.props.removeFromCart} />
-                    <Pagination totalproducts={this.props.product['totalproducts']} currentPage={this.state.currentPage} />
+                    {this.props.product['totalproducts'] <= 12 ? '' : <Pagination totalproducts={this.props.product['totalproducts']} currentPage={this.state.currentPage} />}
                 </div>
             </>
 
