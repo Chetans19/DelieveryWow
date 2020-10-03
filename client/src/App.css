@@ -274,7 +274,7 @@ img {
   display        : flex;
   display        : -ms-flexbox;
   display        : -webkit-flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .nav_page li {
@@ -284,17 +284,30 @@ img {
 }
 
 .nav_page_link {
+  vertical-align : middle;
   padding        : 4px 11px 5px 11px;
   text-decoration: none;
   color          : #131313;
 }
 
+.nav_page_linK_previous_next {
+  color          : #2874F0;
+  vertical-align : middle;
+  padding        : 4px 0px;
+  text-decoration: none;
+}
+
 .nav_page_linK_current {
-  padding         : 4px 11px 5px 11px;
+  vertical-align  : middle;
+  padding         : 5px 11px 5px 11px;
   text-decoration : none;
   color           : white;
   background-color: #2874F0;
   border-radius   : 50%;
+}
+
+.pageof_span {
+  display: none;
 }
 
 @media only screen and (min-width:320px) {}
@@ -310,6 +323,18 @@ img {
 
   .all_dish_card {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pageof_span {
+    display: block;
+
+  }
+
+  .nav_page_linK_previous_next {
+    color          : #2874F0;
+    vertical-align : middle;
+    padding        : 4px 10px;
+    text-decoration: none;
   }
 
 }

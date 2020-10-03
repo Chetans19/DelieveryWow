@@ -28,17 +28,17 @@ class Pagination extends Component {
         else if (Math.ceil(totalproducts / 12) - 4 <= currentPage && currentPage <= Math.ceil(totalproducts / 12) - 4) {
             start_index = Math.ceil(totalproducts / 12) - 4;
             end_index = Math.ceil(totalproducts / 12)
-            console.log(
-                currentPage, start_index, end_index
-            )
+
         }
         else {
-            console.log(
-                currentPage, start_index, end_index
-            )
+
             start_index = currentPage - Math.floor(5 / 2)
             end_index = currentPage - Math.floor(5 / 2)
         }
+
+        console.log(
+            currentPage, start_index, end_index
+        )
 
 
         let links = []
@@ -51,15 +51,17 @@ class Pagination extends Component {
 
     }
 
+
+
     render() {
         return (
             <>
                 <div className="pagination">
-                    <div>Page {this.state.currentPage} of {Math.ceil(this.props.totalproducts / 12)}</div>
+                    <div className="pageof_span">Page {this.props.currentPage} of {Math.ceil(this.props.totalproducts / 12)}</div>
                     <div className="nav_page">
                         {0 >= this.props.currentPage - 1 ? '' :
                             <li key="previous">
-                                <Link className="nav_page_link" to={`/dishes?page=${this.props.currentPage - 1}`}>Previous</Link>
+                                <Link className="nav_page_linK_previous_next" to={`/dishes?page=${this.props.currentPage - 1}`}>Previous</Link>
                             </li>
                         }
 
@@ -74,13 +76,14 @@ class Pagination extends Component {
                                     </li>
                             )
                         })}
-                        {(this.props.currentPage + 1) <= Math.ceil(this.props.totalproducts / 12) ? '' :
+                        {console.log(Number(this.props.currentPage) + 1 <= Math.ceil(this.props.totalproducts / 12))}
+                        {((Number(this.props.currentPage) + 1)) > Math.ceil(this.props.totalproducts / 12) ? '' :
                             <li key="next">
-                                <Link className="nav_page_link" to={`/dishes?page=${Number(this.props.currentPage) + 1}`}>Next</Link>
+                                <Link className="nav_page_linK_previous_next" to={`/dishes?page=${Number(this.props.currentPage) + 1}`}>Next</Link>
                             </li>
                         }
                     </div>
-                    <span></span>
+                    <span className="pageof_span"></span>
                 </div>
             </>
         )
