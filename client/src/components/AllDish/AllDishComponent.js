@@ -35,6 +35,12 @@ class AllDishComponent extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (this.props.product !== nextProps.product) {
+            return false
+        }
+    }
+
 
 
     render() {
