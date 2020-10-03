@@ -11,7 +11,6 @@ export default (state = initalstate, action) => {
             return { ...action.payload }
         }
         default: {
-            console.log(state)
             return state
         }
     }

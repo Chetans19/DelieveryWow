@@ -19,9 +19,10 @@ class App extends Component {
 
       <div className="App">
         <Switch>
-          <Route exact path="/" component={RegForm} />
-          <Route path="/dishes" render={() => <AllDishComponent />} />
-          <Route path="/cart" render={() => <CartPage />} />
+          <Route exact path="/" component={AllDishComponent} />
+          <Route path="/dishes" component={AllDishComponent} />
+          <Route path="/cart" component={CartPage} />
+          <Route path="/regform" component={RegForm} />
         </Switch>
       </div>
 
