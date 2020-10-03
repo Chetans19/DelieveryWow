@@ -417,5 +417,145 @@ export const data = [{
     restaurant: "Random Restaurant 60",
     imageLink: "https://source.unsplash.com/400x300/?food,dish",
     price: 150
+},
+{
+    id: 61,
+    name: "Dish name 51",
+    restaurant: "Random Restaurant 51",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 90
+},
+{
+    id: 62,
+    name: "Dish name 52",
+    restaurant: "Random Restaurant 52",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 85
+},
+{
+    id: 63,
+    name: "Dish name 53",
+    restaurant: "Random Restaurant 53",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 75
+},
+{
+    id: 64,
+    name: "Dish name 54",
+    restaurant: "Random Restaurant 54",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 110
+},
+{
+    id: 65,
+    name: "Dish name 55",
+    restaurant: "Random Restaurant 55",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 55
+},
+{
+    id: 66,
+    name: "Dish name 56",
+    restaurant: "Random Restaurant 6",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 50
+},
+{
+    id: 67,
+    name: "Dish name 57",
+    restaurant: "Random Restaurant 57",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 150
+},
+{
+    id: 68,
+    name: "Dish name 58",
+    restaurant: "Random Restaurant 58",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 150
+},
+{
+    id: 69,
+    name: "Dish name 59",
+    restaurant: "Random Restaurant 59",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 150
+},
+{
+    id: 70,
+    name: "Dish name 60",
+    restaurant: "Random Restaurant 60",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 150
+},
+{
+    id: 71,
+    name: "Dish name 51",
+    restaurant: "Random Restaurant 51",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 90
+},
+{
+    id: 72,
+    name: "Dish name 52",
+    restaurant: "Random Restaurant 52",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 85
+},
+{
+    id: 73,
+    name: "Dish name 53",
+    restaurant: "Random Restaurant 53",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 75
+},
+{
+    id: 74,
+    name: "Dish name 54",
+    restaurant: "Random Restaurant 54",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 110
+},
+{
+    id: 75,
+    name: "Dish name 55",
+    restaurant: "Random Restaurant 55",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 55
+},
+{
+    id: 76,
+    name: "Dish name 56",
+    restaurant: "Random Restaurant 6",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 50
+},
+{
+    id: 77,
+    name: "Dish name 57",
+    restaurant: "Random Restaurant 57",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 150
+},
+{
+    id: 78,
+    name: "Dish name 58",
+    restaurant: "Random Restaurant 58",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 150
+},
+{
+    id: 79,
+    name: "Dish name 59",
+    restaurant: "Random Restaurant 59",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 150
+},
+{
+    id: 80,
+    name: "Dish name 60",
+    restaurant: "Random Restaurant 60",
+    imageLink: "https://source.unsplash.com/400x300/?food,dish",
+    price: 150
 }]
 

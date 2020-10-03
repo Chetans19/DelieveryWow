@@ -15,7 +15,6 @@ export default (history, page_number) => async (dispatch) => {
         if (page_number <= 0) {
             history.push('./dishes')
             return false
-
         }
 
         let product_values = page_number * 12;

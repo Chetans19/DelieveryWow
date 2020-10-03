@@ -39,7 +39,7 @@ class AllDishComponent extends Component {
         }
     }
 
-    componentDidUpdate(prevprops, prevstate, snap) {
+    componentDidUpdate() {
         let query = new URLSearchParams(this.props.location.search)
         let pagenumber = query.get("page") || 1;
         if (this.state.currentPage != pagenumber) {
@@ -86,7 +86,7 @@ class AllDishComponent extends Component {
 
                 <div>
                     < AllDishCard sources={this.props.product['product']} cart_item={this.props.cart} addToCart={this.props.addToCart} removeFromCart={this.props.removeFromCart} />
-                    {this.props.product['totalproducts'] <= 12 ? '' : <Pagination totalproducts={this.props.product['totalproducts']} currentPage={this.state.currentPage} />}
+                    {this.props.product['totalproducts'] <= 12 ? '' : <Pagination totalproducts={Number(this.props.product['totalproducts'])} currentPage={Number(this.state.currentPage)} />}
                 </div>
             </>
 
